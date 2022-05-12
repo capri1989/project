@@ -19,4 +19,4 @@ jobs:
       uses: srggrs/assign-one-project-github-action@1.2.1
       if: github.event.action == 'opened'
       with:
-        project: 'https://githttps//github.com/users/capri1989/projects/4'
+        project: 'https://github.com/users/capri1989/projects/4'
