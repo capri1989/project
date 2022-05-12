@@ -2,7 +2,7 @@ name: Auto Assign to Project(s)
 
 on:
   issues:
-    types: [opened, labeled]
+    types: [opened]
   issue_comment:
     types: [created]
 env:
@@ -15,8 +15,6 @@ jobs:
     steps:
     - name: Assign NEW issues to project 4
       uses: srggrs/assign-one-project-github-action@1.2.1
-      if: github.event.action == 'opened'
-      with:
-        project: 'https://github.com/users/capri1989/projects/4'
-        column_name: 'No Status'
+      project: 'https://github.com/users/capri1989/projects/4'
+      column_name: 'No Status'
 
