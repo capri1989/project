@@ -8,13 +8,13 @@ jobs:
   issue_opened:
     name: issue_opened
     runs-on: ubuntu-latest
-    if: github.event_name == 'issues' && (github.event.action == 'opened')
+    if: github.event_name == 'issues' && github.event.action == 'opened'
     steps:
-      - name: Move issue to No Status
+      - name: 'Move issue to No Status'
         uses: leonsteinhaeuser/project-beta-automations@v1.2.1
         with:
           gh_token: ${{ secrets.MY_SECRET_TOKEN }}
           # organization: sample-org
           project_id: 4
           resource_node_id: ${{ github.event.issue.node_id }}
-          status_value: 'No Status' # Target status
+          status_value: "No Status" # Target status
