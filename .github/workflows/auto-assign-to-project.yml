@@ -1,23 +1,20 @@
-name: Auto Assign to Project(s)
-
+name: Project automations
 on:
   issues:
-    types: [opened]
-  issue_comment:
-    types: [created]
-env:
-  GITHUB_TOKEN: ${{ secrets.MY_SECRET_TOKEN }}
-  
+    types:
+      - opened
 
 jobs:
-  assign_one_project:
+  issue_opened:
+    name: issue_opened
     runs-on: ubuntu-latest
-    name: Assign to One Project
+    if: github.event_name == 'issues' && (github.event.action == 'opened')
     steps:
-    - name: Assign NEW issues to project 4
-      uses: srggrs/assign-one-project-github-action@1.3.1
-      if: github.event.action == 'opened'
-      with:
-        project: 'https://github.com/users/capri1989/projects/4'
-        column_name: 'No Status'
-
+      - name: Move issue to No Status
+        uses: leonsteinhaeuser/project-beta-automations@v1.2.1
+        with:
+          gh_token: ${{ secrets.MY_SECRET_ACCESS_TOKEN }}
+          # organization: sample-org
+          project_id: 4
+          resource_node_id: ${{ github.event.issue.node_id }}
+          status_value: 'No Status' # Target status
