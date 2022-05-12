@@ -18,5 +18,3 @@ jobs:
       if: github.event.action == 'opened'
       with:
         project: 'https://github.com/users/capri1989/projects/4'
-        column_name: 'No Status'
-
