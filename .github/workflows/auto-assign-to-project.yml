@@ -15,6 +15,7 @@ jobs:
     steps:
     - name: Assign NEW issues to project 4
       uses: srggrs/assign-one-project-github-action@1.2.1
-      project: 'https://github.com/users/capri1989/projects/4'
-      column_name: 'No Status'
+      with:
+        project: 'https://github.com/users/capri1989/projects/4'
+        column_name: 'No Status'
 
